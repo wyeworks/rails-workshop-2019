@@ -17,6 +17,8 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
 
+    ['To Do', 'Doing', 'Done'].each { |name| @board.lists.build(name: name) }
+
     if @board.save
       render json: @board, status: :created, location: @board
     else
