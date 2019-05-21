@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
 
     if @board.save
-      render json: @board, status: :created, location: @board
+      render json: @board, include: :lists, status: :created, location: @board
     else
       render json: @board.errors, status: :unprocessable_entity
     end
