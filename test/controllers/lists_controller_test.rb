@@ -1,12 +1,8 @@
 require 'test_helper'
 
 class ListsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @list = lists(:one)
-  end
-
   test "should get index" do
-    get lists_url, as: :json
+    get board_lists_url(board_id: @list.board), as: :json
     assert_response :success
   end
 end
